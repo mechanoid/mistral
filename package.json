@@ -12,9 +12,11 @@
     "build": "node server.build.js"
   },
   "dependencies": {
-    "denodeify": "^1.2.1",
     "rollup": "^0.36.3",
     "rollup-plugin-buble": "^0.14.0",
+    "denodeify": "^1.2.1"
+  },
+  "devDependencies": {
     "standard": "^8.4.0",
     "tap": "^8.0.0"
   }
