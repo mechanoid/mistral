@@ -3,12 +3,12 @@ const rollup = require('rollup').rollup
 const buble = require('rollup-plugin-buble')
 
 const pckg = require(path.resolve(process.cwd(), 'package.json'))
-const helper = require('./lib/bundle-helper')(pckg.mistral)
+const helper = require('./lib/bundle-helper')(pckg.config.mistral)
 
 const config = {
-  bundles: pckg.mistral.bundles,
+  bundles: pckg.config.mistral.bundles,
   paths: {
-    dist: pckg.mistral.paths.dist
+    dist: pckg.config.mistral.paths.dist
   }
 }
 
@@ -17,7 +17,7 @@ const build = (lib, external) => rollup(Object.assign({}, { external }, {
   plugins: [buble()]
 }))
 .then((bundle) => bundle.write({
-  format: pckg.mistral.bundle.format,
+  format: pckg.config.mistral.format,
   dest: helper.modulePath(lib)
 }))
 .catch(e => console.log(e))
