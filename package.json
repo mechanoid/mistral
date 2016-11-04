@@ -10,7 +10,8 @@
   "scripts": {
     "test": "tap test/unit/**/*.js",
     "build": "node server.build.js",
-    "deploy": "gh-pages-deploy"
+    "predeploy": "cd example && rm -rf globals && yarn install && npm run build && mv node_modules globals",
+    "deploy": "npm run predeploy && gh-pages -d example"
   },
   "gh-pages-deploy": {
     "staticpath": "./example"
@@ -21,7 +22,7 @@
     "rollup-plugin-buble": "^0.14.0"
   },
   "devDependencies": {
-    "gh-pages-deploy": "^0.4.2",
+    "gh-pages": "^0.11.0",
     "standard": "^8.4.0",
     "tap": "^8.0.0"
   }
