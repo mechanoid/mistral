@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "test": "tap test/unit/**/*.js",
-    "build": "node server.build.js"
+    "build": "node server.build.js",
+    "deploy": "gh-pages-deploy"
   },
   "gh-pages-deploy": {
     "staticpath": "./example"
