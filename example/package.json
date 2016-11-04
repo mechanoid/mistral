@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "build": "mistral",
-    "build:watch": "nodemon --watch src --exec mistral"
+    "build:watch": "nodemon --watch src --exec mistral",
+    "deploy": "gh-pages-deploy"
   },
-
   "config": {
     "mistral": {
       "base": "src",
@@ -23,7 +23,6 @@
       ]
     }
   },
-
   "dependencies": {
     "mistral": "^0.0.2",
     "requirejs": "^2.3.2"
