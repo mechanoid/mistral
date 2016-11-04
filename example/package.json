@@ -1,0 +1,34 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "private": "true",
+  "author": "Falk Hoppe <falkhoppe81@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "mistral",
+    "build:watch": "nodemon --watch src --exec mistral"
+  },
+
+  "config": {
+    "mistral": {
+      "base": "src",
+      "format": "amd",
+      "paths": {
+        "dist": "dist"
+      },
+      "bundles": [
+        "*.js",
+        "util/*.js",
+        "components/**/index.js"
+      ]
+    }
+  },
+
+  "dependencies": {
+    "mistral": "^0.0.2",
+    "requirejs": "^2.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
