@@ -1,5 +1,7 @@
 # mistral
 
+[![Build Status](https://travis-ci.org/mechanoid/mistral.svg?branch=master)](https://travis-ci.org/mechanoid/mistral)
+
 convention driven easy to use module bundling based on rollup.
 
 This project tries to help setting up frontend projects that have a need
