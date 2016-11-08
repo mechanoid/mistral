@@ -2,7 +2,7 @@ const path = require('path')
 const rollup = require('rollup').rollup
 const buble = require('rollup-plugin-buble')
 
-const pckg = require(path.resolve(process.cwd(), 'package.json'))
+const pckg = require(path.join(process.cwd(), 'package.json'))
 const config = pckg.config.mistral
 
 const globbing = require('./lib/helper/globbing')(config)
