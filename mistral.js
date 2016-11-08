@@ -6,7 +6,7 @@ const pckg = require(path.resolve(process.cwd(), 'package.json'))
 const config = pckg.config.mistral
 
 const globbing = require('./lib/helper/globbing')(config)
-const helper = require('./lib/helper/bundle')(config)
+const bundling = require('./lib/helper/bundling')(config)
 
 const buildConfig = {
   bundles: config.bundles,
@@ -23,7 +23,7 @@ const build = (lib, external) => rollup(Object.assign({}, { external }, {
 }))
 .then((bundle) => bundle.write({
   format: config.format,
-  dest: helper.modulePath(lib)
+  dest: bundling.modulePath(lib)
 }))
 .catch(e => console.log(e))
 
@@ -33,7 +33,7 @@ const build = (lib, external) => rollup(Object.assign({}, { external }, {
 Promise.all(buildConfig.bundles.map(bundle => globbing.collect(bundle)))
 .then(bundleGlobs => globbing.flatten(bundleGlobs))
 .then(bundles => {
-  const externalBundles = helper.externals(bundles)
+  const externalBundles = bundling.externals(bundles)
 
   return bundles.map(lib => build(lib, externalBundles))
 })
