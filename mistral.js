@@ -3,6 +3,7 @@ const rollup = require('rollup').rollup
 const buble = require('rollup-plugin-buble')
 
 const pckg = require(path.resolve(process.cwd(), 'package.json'))
+const globbing = require('./lib/helper/globbing')(pckg.config.mistral)
 const helper = require('./lib/bundle-helper')(pckg.config.mistral)
 
 const config = {
@@ -27,8 +28,8 @@ const build = (lib, external) => rollup(Object.assign({}, { external }, {
 // Collect all files found by the given glob-patterns and build each file
 // as own bundle. To the build process all collected libraries will be configured
 // as externals to each other.
-Promise.all(config.bundles.map(bundle => helper.collectLibs(bundle)))
-.then(bundleGlobs => helper.flattenBundles(bundleGlobs))
+Promise.all(config.bundles.map(bundle => globbing.collect(bundle)))
+.then(bundleGlobs => globbing.flatten(bundleGlobs))
 .then(bundles => {
   const externalBundles = helper.externals(bundles)
 
