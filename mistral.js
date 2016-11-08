@@ -17,7 +17,7 @@ const buildConfig = {
 
 // In this build tool wrapper we decide for rollup (because of its tree-shaking functionality)
 // and buble as es6 transpiler.
-const build = (lib, external) => rollup(Object.assign({}, { external }, {
+const bundle = (lib, external) => rollup(Object.assign({}, { external }, {
   entry: lib,
   plugins: [buble()]
 }))
@@ -35,7 +35,8 @@ Promise.all(buildConfig.bundles.map(bundle => globbing.collect(bundle)))
 .then(bundles => {
   const externalBundles = bundling.externals(bundles)
 
-  return bundles.map(lib => build(lib, externalBundles))
+  return bundles.map(lib => bundle(lib, externalBundles))
 })
 .then(bundles => Promise.all(bundles))
 .then(() => console.log('finished'))
+.catch(e => console.log(e))
