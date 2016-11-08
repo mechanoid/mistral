@@ -1,6 +1,6 @@
 const path = require('path')
 const tap = require('tap')
-const helper = require(path.resolve(process.cwd(), 'lib/bundle-helper'))
+const helper = require(path.resolve(process.cwd(), 'lib/helper/bundle'))
 
 tap.test('#jsBaseName describing the file name of a given lib root without js extension', t => {
   const h = helper({})
