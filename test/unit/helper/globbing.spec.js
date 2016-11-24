@@ -14,8 +14,8 @@ tap.test('#flatten', t => {
 
 tap.test('#prefixGlobPattern', t => {
   const g = globbing({})
-  t.equal(g.prefixGlobPattern('base', 'path/path/path.*.js'), 'base/path/path/path.*.js')
-  t.equal(g.prefixGlobPattern('base', '/path/path/path.*.js'), 'base/path/path/path.*.js')
+  t.equal(g._.prefixGlobPattern('base', 'path/path/path.*.js'), 'base/path/path/path.*.js')
+  t.equal(g._.prefixGlobPattern('base', '/path/path/path.*.js'), 'base/path/path/path.*.js')
 
   t.end()
 })
